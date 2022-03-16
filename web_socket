@@ -30,7 +30,7 @@ def on_close(ws):
     
     
 def on_message(ws, message):
-    
+      
     
     
     json_message = json.loads(message)
@@ -51,11 +51,12 @@ def manage_websocket():
 def main():
     try:
         while 1:
+            print('connected')
             manage_websocket()
             time.sleep(60)
             
     except Exception as e:
         print(e)
         
-if '__name__' == '__main':
+if __name__ == '__main__':
     main()
