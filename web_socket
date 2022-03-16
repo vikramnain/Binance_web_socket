@@ -1,0 +1,61 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar  3 21:31:34 2021
+
+@author: vikram05
+"""
+
+
+import websocket
+import json
+import time
+
+
+
+
+
+socket = "wss://stream.binance.com:9443/ws/btcusdt@trade"
+
+
+        
+    
+    
+    
+
+def on_open(ws):
+    print("Connection opened")
+    
+def on_close(ws):
+    print("Connection closed")
+    
+    
+def on_message(ws, message):
+    
+    
+    
+    json_message = json.loads(message)
+    print(json_message['p'])
+    
+        
+    
+
+
+def manage_websocket():
+    try:
+        ws = websocket.WebSocketApp(socket, on_open=on_open, on_close=on_close, on_message=on_message)
+        ws.run_forever()
+    except Exception as e:
+        print(e)
+        
+
+def main():
+    try:
+        while 1:
+            manage_websocket()
+            time.sleep(60)
+            
+    except Exception as e:
+        print(e)
+        
+if '__name__' == '__main':
+    main()
